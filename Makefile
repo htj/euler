@@ -17,7 +17,7 @@ problem%: problem%.hs
 	strip $@
 
 runall:
-	@$(foreach var,$(PROGRAMS),./$(var);)
+	@$(foreach var,$(PROGRAMS), echo -n "$(var): \t" ; ./$(var);)
 
 timeeach:
 	@$(foreach var,$(PROGRAMS), echo "\n$(var)" ; time -f "%U user, %S system, %E total" ./$(var);)
