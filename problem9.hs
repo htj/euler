@@ -9,7 +9,8 @@
 
 module Main (main) where
 
-sideLengths = [ (a,b) | a <- [1..998], b <- [a..998] ]
+-- we can stop at 500 as c > a
+sideLengths = [ (a,b) | a <- [1..500], b <- [a..500] ]
 
 tTriplets = [ [a,b,c] | (a,b) <- sideLengths, let c = sqrt ( a*a + b*b), a + b + c == 1000 ]
 

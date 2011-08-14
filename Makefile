@@ -1,4 +1,4 @@
-.PHONY: problem1 problem2 problem3 problem4 problem5 problem6 problem7
+.PHONY: problem1 problem2 problem3 problem4 problem5 problem6 problem7 problem8 problem9 problem10 problem11
 
 clean:
 	rm *.hi *.o
@@ -24,4 +24,16 @@ problem6:
 
 problem7:
 	ghc --make -O2 -dynamic problem7.hs -o problem7
+
+problem8:
+	ghc --make -O2 -dynamic problem8.hs -o problem8
+
+problem9:
+	ghc --make -O2 -dynamic problem9.hs -o problem9
+
+problem10:
+	ghc --make -O2 -dynamic problem10.hs -o problem10
+
+problem11:
+	ghc --make -O2 -dynamic problem11.hs -o problem11
 

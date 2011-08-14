@@ -10,6 +10,10 @@
 -- matches n = all (0==) [ mod n x | x <- [2..20] ]
 -- allMatches = [ x | x <- [1..], matches x ]
 
+-- Very fast solution using least common denominator (lcm) from Haskell std lib
+-- result = foldr lcm 20 [11..19]
+
+
 module Main (main) where
 
 -- No need to check < 11 - those are covered by the larger numbers
