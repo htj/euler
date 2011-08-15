@@ -8,7 +8,7 @@ module Main (main) where
 import Data.Char
 
 
-n = truncate (2**1000)
+n = truncate (2^1000)
 
 result = sum [ digitToInt a | a <- show n ]
 
