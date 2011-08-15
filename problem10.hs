@@ -7,7 +7,8 @@ module Main (main) where
 
 import Data.Numbers.Primes
 
-result = sum [ x | x <- takeWhile (<= 2000000) primes ]
+
+result = sum ( takeWhile (<= 2000000) primes )
 
 main = print result
 
