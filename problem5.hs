@@ -4,31 +4,32 @@
 -- What is the smallest positive number that is evenly divisible by all of the
 -- numbers from 1 to 20?
 
--- This could probably be done faster with least common divisor
+module Main (main) where
 
 -- Simple, but very slow solution
--- matches n = all (0==) [ mod n x | x <- [2..20] ]
--- allMatches = [ x | x <- [1..], matches x ]
 
--- Very fast solution using least common denominator (lcm) from Haskell std lib
--- result = foldr lcm 20 [11..19]
+--matches n = all (0==) [ mod n x | x <- [2..20] ]
+--allMatches = [ x | x <- [1..], matches x ]
 
 
-module Main (main) where
+-- faster solution, same approach - just lots of speed hacks
 
 -- No need to check < 11 - those are covered by the larger numbers
 -- No need to check 19 & 20 as all candidates are multiples of those
 -- Reversing saves a few checks (reduces time ~2%)
-matches n = all (0==) [ mod n x | x <- reverse [11..18] ]
+--matches n = all (0==) [ mod n x | x <- reverse [11..18] ]
 
 -- Multiply the primes together and multiple with 20 will yield
 -- a higer starting base, reducing candidate space somewhat
-start   = 3*5*7*11*13*17*19*20
+--start   = 3*5*7*11*13*17*19*20
 -- only trying multiples of 19*20 reduces candidates significantly
-offset  = start + (19*20)
-allMatches = [ x | x <- [start,offset..], matches x ]
+--offset  = start + (19*20)
+--allMatches = [ x | x <- [start,offset..], matches x ]
 
-firstMatch = head allMatches
+--firstMatch = head allMatches
+--main = print firstMatch
 
-main = print firstMatch
+
+-- Fast solution using least common denominator (lcm) from Haskell std lib
+main = print (foldr lcm 20 [11..19])
 
