@@ -1,0 +1,9 @@
+These are solutions for Project Euler written in Haskell.
+
+The main usage for this has been learning Haskell. Some of the solutions could
+probably be better.
+
+I've inposed the restriction that all programs should run in less that 1
+second. Currently that is the case, but the restriction might be loosened if
+needed.
+
