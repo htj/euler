@@ -7,7 +7,11 @@ module Main (main) where
 
 a = sum [ x^x | x <- [1..1000] ]
 
-result = read ( reverse (take 10 (reverse (show a)))) :: Integer
+-- get last digit by string conversion
+--result = read ( reverse (take 10 (reverse (show a)))) :: Integer
+
+-- slightly cleverer way
+result = a `mod` 10^10
 
 main = print result
 

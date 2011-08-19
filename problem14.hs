@@ -20,23 +20,26 @@
 -- Using a regular int for counting has speed benefits
 -- Using speed hacks in length calc is slower
 -- foldr uses a lot of memory, foldl does not
--- Using maximum instead of foldl/foldr is easier to understand and runs like the fastest
--- `mod` 2 is faster than even - which is odd :-)
+-- Using maximum easier to understand and runs like the fastest fold
+-- mod n 2 is quite faster than even - which is odd :-)
 -- Using Word32 from Data.Word speeds up factor 2x
+-- bitwise & 1 is slightly faster then mod n 2
 
--- Currently optimized for elegance / readability
+-- Currently optimized for elegance / readability (except the bits and word)
 -- Probably need memoization to get faster
 
 import Data.Word
+import Data.Bits
 
 cltzLength :: Word32 -> Int
-cltzLength 1 = 1
-cltzLength n | mod n 2 == 0  = (cltzLength $ div n 2) + 1
+cltzLength 4 = 3 -- 1,2 is not needed, shaves ~1% time compared 1 = 1
+cltzLength n | n .&. 1 == 0  = (cltzLength $ div n 2) + 1
              | otherwise     = (cltzLength $ n*3 + 1) + 1
 
 -- I'm fairly sure we only need to consider odd numbers as even numbers
 -- collapse quite fast (hence short collatz length)
-lengths = [ (cltzLength x, x) | x <- [5,7..999999] ]
+m = 10^6 - 1
+lengths = [ (cltzLength x, x) | x <- [5,7..m] ]
 result = snd $ maximum lengths
 
 main = print result
