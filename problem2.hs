@@ -7,25 +7,13 @@
 -- four million, find the sum of the even-valued terms.
 
 
-module Main (main) where
+-- Making a simple fibonacci function is straightforward. Making a version
+-- with memoization is slightly more tricky, but not that difficult. The one
+-- provided by this module is a bit faster then a memoization version.
+import Data.Numbers.Fibonacci
 
-fib :: Int -> Int
-fib 0 = 0
-fib 1 = 1
-fib n = fib (n-2) + fib (n-1)
 
--- Using identities, which makes calculating fibnocci numbers silly fast
--- Stolen from: http://www.haskell.org/haskellwiki/The_Fibonacci_sequence
---
--- fib n | even n         = f1 * (f1 + 2 * f2)
---      | n `mod` 4 == 1 = (2 * f1 + f2) * (2 * f1 - f2) + 2
---      | otherwise      = (2 * f1 + f2) * (2 * f1 - f2) - 2
---   where k = n `div` 2
---         f1 = fib k
---         f2 = fib (k-1)
-
--- fib(34) = 5702887
-sumfib = sum [ x | n <- [1..34], let x = fib(n), x <= 4000000 && x `mod` 2 == 0 ]
+sumfib = sum $ filter even $ takeWhile (<4000000 ) $ map fib [1..]
 
 main = print sumfib
 
