@@ -1,6 +1,6 @@
 
 PROGRAMS := problem1  problem2  problem3  problem4  problem5  problem6  problem7  problem8  problem9  problem10 \
-            problem11 problem12 problem13 problem14 problem16 problem17 problem20 problem25 problem48
+            problem11 problem12 problem13 problem14 problem16 problem17 problem18 problem20 problem25 problem48
 
 CC=ghc
 CFLAGS=--make -O2 -dynamic
